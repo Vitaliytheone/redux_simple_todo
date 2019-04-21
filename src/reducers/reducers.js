@@ -15,7 +15,8 @@ export const rootReducer = (state = initialState, action) => {
         case ADD_TODO:
             return {
                 ...state,
-                list: [...state.list, state.item]
+                list: [...state.list, state.item],
+                item: ''
             }
         case REMOVE_TODO: {
             return {

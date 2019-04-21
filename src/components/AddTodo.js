@@ -34,7 +34,7 @@ class AddTodo extends Component {
         const { item } = this.props;
         return (
             <InputGroup>
-                <Input onChange={this.addTodoText} onKeyDown={this.addTodoKey(item)} />
+                <Input onChange={this.addTodoText} value={item} onKeyDown={this.addTodoKey(item)} />
                 <InputGroupAddon addonType="append">
                     <Button color="success" outline onClick={this.addTodoItem(item)}>Add new todo</Button>
                 </InputGroupAddon>

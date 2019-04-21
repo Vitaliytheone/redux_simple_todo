@@ -6,11 +6,12 @@ import { completeTodo } from '../actions /actions';
 
 class Todo extends Component {
 
-    completeTodo = (list) => () => {
-        const { removeTodo } = this.props;
-        list.filter((item, index) => { })
-        console.log(list);
-        removeTodo(list);
+    completeTodo = (item) => () => {
+        const { list, removeTodo } = this.props;
+        console.log(item)
+        const newList = list.filter((itemTodo) => item != itemTodo);
+        console.log(newList);
+        removeTodo(newList);
     }
 
     render() {
@@ -21,7 +22,7 @@ class Todo extends Component {
                     <Card body>
                         <CardTitle>{new Date().toLocaleDateString()}</CardTitle>
                         <CardText>{item}</CardText>
-                        <Button color="danger" onClick={this.completeTodo(list)}>Complete!</Button>
+                        <Button color="danger" onClick={this.completeTodo(item)}>Complete!</Button>
                     </Card >
                 </Col>
             )
