@@ -11,9 +11,12 @@ class AddTodo extends Component {
         addText(event.target.value)
     }
 
-    addTodoItem = (item) => (event) => {
+    addTodoItem = (item) => () => {
         const { addTodo } = this.props;
-        addTodo(item);
+        if (item !== '') {
+            addTodo(item);
+        }
+        // localStorage.setItem('newToDo', item);
     }
 
     addTodoKey = (item) => (event) => {

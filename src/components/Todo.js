@@ -8,7 +8,7 @@ class Todo extends Component {
 
     completeTodo = (list) => () => {
         const { removeTodo } = this.props;
-        list.filter((item, index, list) => index !== list.length -1 )
+        list.filter((item, index) => { })
         console.log(list);
         removeTodo(list);
     }
