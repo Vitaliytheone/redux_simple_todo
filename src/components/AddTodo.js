@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
+import { WiredButton, WiredInput } from "wired-elements"
 
 import { connect } from 'react-redux';
 import { newTodo, todoText, completeTodo } from '../actions /actions';
@@ -16,7 +17,6 @@ class AddTodo extends Component {
         if (item !== '') {
             addTodo(item);
         }
-        // localStorage.setItem('newToDo', item);
     }
 
     addTodoKey = (item) => (event) => {
@@ -39,6 +39,10 @@ class AddTodo extends Component {
                     <Button color="success" outline onClick={this.addTodoItem(item)}>Add new todo</Button>
                 </InputGroupAddon>
             </InputGroup>
+            // <div>
+            //     <Wired-input onChange={this.addTodoText} value={item} onKeyDown={this.addTodoKey(item)} />
+            //     <Wired-button onClick={this.addTodoItem(item)}>Add new todo</Wired-button>
+            // </div>
         )
     }
 }

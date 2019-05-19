@@ -1,4 +1,4 @@
-import { ADD_TODO, ADD_TEXT, REMOVE_TODO } from "../constants/constants";
+import { ADD_TODO, ADD_TEXT, REMOVE_TODO, DISABLE_TODO, MOVE_TODO } from "../constants/constants";
 
 export const todoText = (text) => {
     return {
@@ -15,10 +15,24 @@ export const newTodo = (item) => {
 };
 
 
-export const completeTodo = (list) => {
+export const completeTodo = (item) => {
     return {
         type: REMOVE_TODO,
-        list: list
+        item
+    }
+};
+
+export const holdOverTodo = (index) => {
+    return {
+        type: DISABLE_TODO,
+        index
+    }
+};
+
+export const movedTodo = (oldIndex, newIndex) => {
+    return {
+        type: MOVE_TODO,
+        payload: { oldIndex, newIndex }
     }
 };
 

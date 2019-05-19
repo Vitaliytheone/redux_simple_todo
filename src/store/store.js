@@ -1,5 +1,11 @@
 import { createStore } from 'redux'
 import { rootReducer } from '../reducers/reducers';
-import { composeWithDevTools } from 'redux-devtools';
+import { loadState, saveState } from '../localstorage/localStorage';
 
-export const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const localState = loadState();
+export const store = createStore(rootReducer, localState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
+store.subscribe(() => {
+    saveState(store.getState());
+});
+

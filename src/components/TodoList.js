@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import AddTodo from './AddTodo';
-import Todo from './Todo';
+import { connect } from 'react-redux';
 
-export default class TodoList extends Component {
+import SortableTodoList from './SortableTodoList';
+import { movedTodo } from '../actions /actions';
+
+class TodoList extends Component {
 
     render() {
         return (
@@ -13,11 +16,23 @@ export default class TodoList extends Component {
                         <AddTodo></AddTodo>
                     </Col>
                 </Row>
-                <Row>
-                    <Todo></Todo>
-                </Row>
+                <SortableTodoList list={this.props.list} onSortEnd={this.props.orderList}></SortableTodoList>
             </Container>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return state;
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        orderList: ({ oldIndex, newIndex }) => {
+            dispatch(movedTodo(oldIndex, newIndex))
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
 
